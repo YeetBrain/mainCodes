@@ -29,7 +29,7 @@ $user_data = check_login($con);
             background-color: #060c31;
             text-align: center;
         }
-
+     
         .topnav a {
             display: inline-block;
             color: #f2f2f2;
@@ -43,21 +43,21 @@ $user_data = check_login($con);
             margin: 0 5px;
             transition: background-color 0.3s ease;
         }
-
+    
         .topnav a:hover {
             background-color: #ddd;
             color: black;
         }
-
+    
         .topnav a.active {
             background-color: #fff;
             color: #060c31;
         }
-
+    
         h1 {
             font-family: "Raleway", serif;
         }
-
+      
         body {
             background-color: #30a1da;
             background-image: url('https://gpacalclfa.s3.us-east-2.amazonaws.com/mainCodes/CalcImageNew.jpg'); 
@@ -65,6 +65,7 @@ $user_data = check_login($con);
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
+    
         }
 
         .gpa-calculator {
@@ -89,7 +90,7 @@ $user_data = check_login($con);
             margin: 20px;
         }
 
-        p1, p2 {
+        p1{
             display: inline-block;
             color: #f2f2f2;
             text-align: center;
@@ -99,16 +100,24 @@ $user_data = check_login($con);
             font-family: "Raleway", serif;
             border-radius: 10px;
             margin: 40px;
-            margin-top: 30px;
+            margin-top: 180px;
+            background-color: #060c31;
         }
 
         p2 {
             background-color: rgba(24, 168, 190, 0.8);
-            margin-left: 350px;
-        }
-
-        p1 {
-            background-color: #060c31;
+            display: inline-block;
+            color: #f2f2f2;
+            text-decoration: none;
+            text-align: center;
+            font-size: 17px;
+            font-family: "Raleway", serif;
+            border-radius: 10px;
+            margin: 0;
+            position: absolute;
+            top: 15%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
         .button-container {
@@ -128,15 +137,9 @@ $user_data = check_login($con);
             padding-bottom: 50px;
         }
 
-        .logoutstyle {
+        .logoutstyle{
             text-align: left;
-        }
 
-        #feedback {
-            text-align: center;
-            color: green;
-            font-size: 18px;
-            margin-top: 20px;
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
@@ -153,7 +156,7 @@ $user_data = check_login($con);
 
     <p2 style="font-family: Georgia">
         <font size="7">
-            Weighted and Unweighted GPA Calculators
+            LFA GPA Calculator
         </font>
     </p2>
 

@@ -16,9 +16,8 @@ $user_data = check_login($con);
     ?>
 
 <!DOCTYPE html>
-<html lang="en">  
+<html lang="en">
 <head>
-
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GPA Calculator</title>
@@ -74,6 +73,10 @@ $user_data = check_login($con);
     .button-container:hover {
       background: rgba(0, 0, 0, 0.9);
     }
+    .logoutstyle{
+            text-align: left;
+
+        }
 
     /* Additional styling for calculator and about sections */
     .calculator-section, .about-section {
@@ -122,11 +125,6 @@ $user_data = check_login($con);
       color: #060c31;
     }
 
-    .logoutstyle{
-            text-align: left;
-
-        }
-
     /* Styling for headers and paragraphs */
     h1 { font-family: "Raleway", serif; }
 
@@ -138,12 +136,10 @@ $user_data = check_login($con);
   <div class="topnav">
     <a href="home.php" id="homeLink" class="active">Home</a>
     <a href="calculator.php" id="calculatorLink">Calculator</a>
-    <a href="faq.php" id="faqLink">FAQ</a>
+    <a href="faq.php" id="qaLink">QA</a>
     <div class="logoutstyle">
             <a href="login.php"> Logout </a>
-
         </div>
-
   </div>
 
   <!-- Main container holding all sections -->
@@ -176,7 +172,7 @@ $user_data = check_login($con);
       var calculatorSection = document.querySelector('.calculator-section');
       
       imageSection.style.height = '50vh';
-      calculatorSection .classList.add('show');
+      calculatorSection.classList.add('show');
     }
     
     // Function to switch to the about section from calculator section
@@ -201,24 +197,24 @@ $user_data = check_login($con);
     document.addEventListener("DOMContentLoaded", function() {
       const homeLink = document.getElementById('homeLink');
       const calculatorLink = document.getElementById('calculatorLink');
-      const faqLink = document.getElementById('faqLink');
+      const qaLink = document.getElementById('qaLink');
      
       homeLink.addEventListener('click', function(event) {
         calculatorLink.classList.remove('active');
-        faqLink.classList.remove('active');
+        qaLink.classList.remove('active');
         homeLink.classList.add('active');
       });
 
       calculatorLink.addEventListener('click', function(event) {
         homeLink.classList.remove('active');
-        faqLink.classList.remove('active');
+        qaLink.classList.remove('active');
         calculatorLink.classList.add('active');
       });
 
-      faqLink.addEventListener('click', function(event) {
+      qaLink.addEventListener('click', function(event) {
         homeLink.classList.remove('active');
         calculatorLink.classList.remove('active');
-        faqLink.classList.add('active');
+        qaLink.classList.add('active');
       });
     });
   </script>
