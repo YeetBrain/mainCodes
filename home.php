@@ -22,7 +22,7 @@ $user_data = check_login($con);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GPA Calculator</title>
   
-  <!-- CSS for styling the page -->
+  <!-- CSS for styling the page hi-->
   <style>
     /* General styles for the body and html, setting font and background color */
     body, html {
