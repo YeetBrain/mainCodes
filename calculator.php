@@ -19,6 +19,7 @@ $user_data = check_login($con);
 <head>
     <title>GPA Calculator</title>
     <style>
+<style>
         body {
             margin: 0;
             font-family: Arial, Helvetica, sans-serif;
@@ -29,7 +30,7 @@ $user_data = check_login($con);
             background-color: #060c31;
             text-align: center;
         }
-     
+
         .topnav a {
             display: inline-block;
             color: #f2f2f2;
@@ -43,29 +44,28 @@ $user_data = check_login($con);
             margin: 0 5px;
             transition: background-color 0.3s ease;
         }
-    
+
         .topnav a:hover {
             background-color: #ddd;
             color: black;
         }
-    
+
         .topnav a.active {
             background-color: #fff;
             color: #060c31;
         }
-    
+
         h1 {
             font-family: "Raleway", serif;
         }
-      
+
         body {
             background-color: #30a1da;
-            background-image: url('https://gpacalclfa.s3.us-east-2.amazonaws.com/mainCodes/CalcImageNew.jpg'); 
+            background-image: url('https://gpacalclfa.s3.us-east-2.amazonaws.com/mainCodes/CalcImageNew.jpg');
             height: 100%;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-    
         }
 
         .gpa-calculator {
@@ -90,7 +90,7 @@ $user_data = check_login($con);
             margin: 20px;
         }
 
-        p1{
+        p1 {
             display: inline-block;
             color: #f2f2f2;
             text-align: center;
@@ -121,15 +121,25 @@ $user_data = check_login($con);
         }
 
         .button-container {
-            display: inline-block;
-            color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .button-container button, .button-container a {
+            font-size: 20px;
+            padding: 10px 20px;
+            border: 2px solid #024fd4;
+            border-radius: 5px;
+            background-color: #060c31;
+            color: white;
+            text-decoration: none;
             text-align: center;
-            padding: 14px 20px;
-            font-size: 17px;
-            font-family: "Raleway", serif;
-            border-radius: 10px;
-            background-color: black;
-            margin-left: 710px;
+        }
+
+        .button-container button:hover, .button-container a:hover {
+            background-color: #0056b3;
         }
 
         .container {
@@ -137,12 +147,92 @@ $user_data = check_login($con);
             padding-bottom: 50px;
         }
 
-        .logoutstyle{
+        .logoutstyle {
             text-align: left;
-
         }
-        .container{
-            
+
+        /* Container styling */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 45vh;
+            font-family: Arial, sans-serif;
+        }
+
+        /* GPA calculator styling */
+        .gpa-calculator {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        /* Header styling */
+        .gpa-calculator h2, .gpa-calculator h3 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table th, table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #f4f4f4;
+        }
+
+        select, input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+
+        /* Button styling */
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin: 5px;
+            display: block;
+            width: calc(100% - 10px);
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:active {
+            background-color: #004080;
+        }
+
+
+        /* Result styling */
+        #gpaCalculator p {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+
+        #gpaCalculator p:not(:empty) {
+            margin-top: 20px;
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
