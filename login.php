@@ -208,8 +208,6 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <div class="signUp-link">
                     <p>Don't have an account? <a href="signup.php" class="signUpBtn-link">Sign Up</a></p>
                 </div>
-                <br>
-                <a href="noLoginHome.html" style="font-size: 20px">Public Page</a>
             </form>
         </div>
     </div>
