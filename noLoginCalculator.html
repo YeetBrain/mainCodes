@@ -1,19 +1,3 @@
-<?php
-session_start();
-include("connection.php");
-include("functions.php");
-
-$user_data = check_login($con);
-?>
-
-<?php
-    if (isset($user_data['user_name'])) {
-        echo htmlspecialchars($user_data['user_name']);
-    } else {
-        echo "User data not available.";
-    }
-?>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -29,7 +13,7 @@ $user_data = check_login($con);
             background-color: #060c31;
             text-align: center;
         }
-     
+
         .topnav a {
             display: inline-block;
             color: #f2f2f2;
@@ -43,29 +27,28 @@ $user_data = check_login($con);
             margin: 0 5px;
             transition: background-color 0.3s ease;
         }
-    
+
         .topnav a:hover {
             background-color: #ddd;
             color: black;
         }
-    
+
         .topnav a.active {
             background-color: #fff;
             color: #060c31;
         }
-    
+
         h1 {
             font-family: "Raleway", serif;
         }
-      
+
         body {
             background-color: #30a1da;
-            background-image: url('https://gpacalclfa.s3.us-east-2.amazonaws.com/mainCodes/CalcImageNew.jpg'); 
+            background-image: url('https://gpacalclfa.s3.us-east-2.amazonaws.com/mainCodes/CalcImageNew.jpg');
             height: 100%;
             background-position: center;
             background-repeat: no-repeat;
             background-size: cover;
-    
         }
 
         .gpa-calculator {
@@ -90,7 +73,7 @@ $user_data = check_login($con);
             margin: 20px;
         }
 
-        p1{
+        p1 {
             display: inline-block;
             color: #f2f2f2;
             text-align: center;
@@ -121,15 +104,25 @@ $user_data = check_login($con);
         }
 
         .button-container {
-            display: inline-block;
-            color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+
+        .button-container button, .button-container a {
+            font-size: 20px;
+            padding: 10px 20px;
+            border: 2px solid #024fd4;
+            border-radius: 5px;
+            background-color: #060c31;
+            color: white;
+            text-decoration: none;
             text-align: center;
-            padding: 14px 20px;
-            font-size: 17px;
-            font-family: "Raleway", serif;
-            border-radius: 10px;
-            background-color: black;
-            margin-left: 710px;
+        }
+
+        .button-container button:hover, .button-container a:hover {
+            background-color: #0056b3;
         }
 
         .container {
@@ -137,30 +130,108 @@ $user_data = check_login($con);
             padding-bottom: 50px;
         }
 
-        .logoutstyle{
+        .logoutstyle {
             text-align: left;
-
         }
-        .container{
-            
+
+        /* Container styling */
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 45vh;
+            font-family: Arial, sans-serif;
+        }
+
+        /* GPA calculator styling */
+        .gpa-calculator {
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 100%;
+        }
+
+        /* Header styling */
+        .gpa-calculator h2, .gpa-calculator h3 {
+            text-align: center;
+            color: #333;
+        }
+
+        /* Table styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        table th, table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        table th {
+            background-color: #f4f4f4;
+        }
+
+        select, input[type="text"], input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin: 5px 0;
+            box-sizing: border-box;
+        }
+
+        /* Button styling */
+        button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+            margin: 5px;
+            display: block;
+            width: calc(100% - 10px);
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        button:active {
+            background-color: #004080;
+        }
+
+
+        /* Result styling */
+        #gpaCalculator p {
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+        }
+
+        #gpaCalculator p:not(:empty) {
+            margin-top: 20px;
         }
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
 </head>
 <body>
     <div class="topnav">
-        <a href="home.php" id="homeLink">Home</a>
-        <a href="calculator.php" id="calculatorLink" class="active">Calculator</a>
-        <a href="faq.php" id="qaLink">FAQ</a>
+        <a href="noLoginHome.html" id="homeLink" class="active">Home</a>
+        <a href="noLoginCalculator.html" id="calculatorLink">Calculator</a>
+        <a href="noLoginFaq.html" id="qaLink">QA</a>
         <div class="logoutstyle">
-            <a href="login.php"> Logout </a>
+            <a href="login.php">Login or Signup</a>
         </div>
     </div>
 
     <p2 style="font-family: Georgia">
-        <font size="7">
-            LFA GPA Calculator
-        </font>
+        <font size="7">LFA GPA Calculator</font>
     </p2>
 
     <p1 style="font-family: Georgia">
@@ -169,12 +240,9 @@ $user_data = check_login($con);
         </font>
     </p1>
 
-    <div class="identifier">
-        <br>
-        <br>
+    <div class="button-container">
         <button onclick="generatePDF()" style="font-size: 20px; padding: 10px 20px; border: 2px solid #024fd4; border-radius: 5px; background-color: #060c31; color: white;">Generate PDF Report</button>
-        <button onclick="savePDF()" style="font-size: 20px; padding: 10px 20px; border: 2px solid #024fd4; border-radius: 5px; background-color: #060c31; color: white;">Save Latest PDF Report</button>
-        <button onclick="accessPDF()" style="font-size: 20px; padding: 10px 20px; border: 2px solid #024fd4; border-radius: 5px; background-color: #060c31; color: white;">Access Old PDF Report</button>
+        <a href="login.php" style="font-size: 20px; padding: 10px 20px; border: 2px solid #024fd4; border-radius: 5px; background-color: #060c31; color: white;">Login or Signup to Save Latest PDF Report</a>
     </div>
 
     <div class="container">
@@ -367,7 +435,7 @@ $user_data = check_login($con);
             pdfContent += `${unweightedGpaResult}\n`;
 
             doc.text(pdfContent, 10, 10);
-            doc.save('GPA_Calculator_Report.pdf')
+            doc.save('GPA_Calculator_Report.pdf');
 
             // Create a Blob from the generated PDF and save it to a global variable
             latestPdfBlob = doc.output('blob');
@@ -376,47 +444,22 @@ $user_data = check_login($con);
             document.getElementById('feedback').textContent = "PDF has been generated successfully.";
         }
 
-        function savePDF() {
-            if (latestPdfBlob) {
-                const formData = new FormData();
-                formData.append('pdf', latestPdfBlob, 'GPA_Calculator_Report.pdf');
-
-                fetch('save_pdf.php', {
-                    method: 'POST',
-                    body: formData
-                })
-                .then(response => response.text())
-                .then(result => {
-                    document.getElementById('feedback').textContent = result;
-                })
-                .catch(error => {
-                    console.error('Error:', error);
-                });
-            } else {
-                alert("Please generate a PDF first.");
-            }
-        }
-
-        function accessPDF() {
-            window.location.href = 'access_pdf.php';
-        }
-
-        document.addEventListener("DOMContentLoaded", function() {
+        document.addEventListener("DOMContentLoaded", function () {
             const homeLink = document.getElementById('homeLink');
             const calculatorLink = document.getElementById('calculatorLink');
             const qaLink = document.getElementById('qaLink');
 
-            homeLink.addEventListener('click', function(event) {
+            homeLink.addEventListener('click', function (event) {
                 calculatorLink.classList.remove('active');
                 qaLink.classList.remove('active');
             });
 
-            calculatorLink.addEventListener('click', function(event) {
+            calculatorLink.addEventListener('click', function (event) {
                 homeLink.classList.remove('active');
                 qaLink.classList.remove('active');
             });
 
-            qaLink.addEventListener('click', function(event) {
+            qaLink.addEventListener('click', function (event) {
                 homeLink.classList.remove('active');
                 calculatorLink.classList.remove('active');
             });

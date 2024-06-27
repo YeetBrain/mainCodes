@@ -106,7 +106,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
             <?php endif; ?>
             <input type="submit" value="Login">
             <br>
-            <a href="signup.php">Signup</a>
+            <a href="signup.php" style="font-size: 20px">Signup</a>
+            <br>
+            <a href="noLoginHome.html" style="font-size: 20px">Public Page</a>
         </form>
     </div>
 </body>

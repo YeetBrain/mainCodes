@@ -108,7 +108,9 @@ function random_num($length) {
             <?php endif; ?>
             <input type="submit" value="Signup">
             <br>
-            <a href="login.php">Login</a>
+            <a href="login.php" style="font-size: 20px">Login</a>
+            <br>
+            <a href="noLoginHome.html" style="font-size: 20px">Public Page</a>
         </form>
     </div>
 </body>
