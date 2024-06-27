@@ -69,7 +69,7 @@ $user_data = check_login($con);
     body, html {
       margin: 0;
       padding: 0;
-      background-image: url('https://gpacalclfa.s3.us-east-2.amazonaws.com/mainCodes/CalcImage.jpg'); 
+      background-image: url('regImg.png'); 
       background-position: center;
       background-repeat: no-repeat;
       background-size: cover;
@@ -123,7 +123,7 @@ $user_data = check_login($con);
 
     /* Additional styling for calculator and about sections */
     .calculator-section, .about-section {
-      background-color: lightblue;
+      background-color: rgb(175, 181, 188);
       padding: 25px;
       text-align: center;
       display: none;
@@ -138,12 +138,12 @@ $user_data = check_login($con);
 <body>
   <!--This is the navbar which switches through the hyperlinks-->
   <header>
-      <a href="noLoginHome.html" class="logo">EZCalc</a>
+      <a href="home.php" class="logo">EZCalc</a>
       <nav>
-          <a href="noLoginHome.html" class = "active" id="homeLink">Home</a>
-          <a href="noLoginCalculator.html" id="calculatorLink">Calculator</a>
-          <a href="noLoginFaq.html" id="qaLink">FAQ</a>
-              <a href="login.php">Login or Signup</a>
+          <a href="home.php" class = "active" id="homeLink">Home</a>
+          <a href="calculator.php" id="calculatorLink">Calculator</a>
+          <a href="faq.php" id="qaLink">FAQ</a>
+              <a href="login.php">Logout</a>
       </nav>
   </header>
 
@@ -160,7 +160,7 @@ $user_data = check_login($con);
       <h2><font size="7">Information about the Calculator</font></h2>
       <br>
       <p style = "font-size: 20px;"> Switch to the <button class = "button-switch" style="font-size: 20px;" onclick="slideToAbout()">About Section</button></p> <br>
-      <p><font size="5">On the calculator page there are two calculators which calculate LFA weighted GPA and unweighted GPA. LFA GPA system start out at A+ with it equal to 4.33 and deducts 0.33 for each grade below so A would be 4. Honors and AP classes do not affect it.</font></p>
+      <p><font size="5">On the calculator page there is more information and one calculator. There are three buttons under which allow you to make pdfs, save them for future use, and access them in the future.</font></p>
     </div>
     <br>
     <!-- About section with details about creators -->
@@ -168,7 +168,7 @@ $user_data = check_login($con);
       <h2><font size="7">About Us</font></h2>
       <br>
       <p style = "font-size: 20px;"> Switch to the <button class = "button-switch" style="font-size: 20px;" onclick="slideToCalculator()">Calculator Section</button></p> <br>
-      <p><font size="5">This calculator was made by Haricharan Yarlagadda and David Nguyen for FBLA Intro to Programming 2024.</font></p>
+      <p><font size="5">This calculator was made by Haricharan Yarlagadda'27 and David Nguyen'27 for FBLA Intro to Programming 2024.</font></p>
     </div>
   </div>
 

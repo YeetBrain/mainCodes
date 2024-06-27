@@ -67,18 +67,16 @@ $user_data = check_login($con);
             color: #FF6700;
         }
 
-        body{
-            background-image: url('https://gpacalclfa.s3.us-east-2.amazonaws.com/mainCodes/CalcImageNew.jpg'); 
-            height: 100%;
-
-            /* Center and scale the image nicely */
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
+        body {
+    background-image: url('blurImg.png');
+    min-height: 100vh;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
         .heading-text {
             text-shadow:
-                0 0 10px #FF6700;
+                0 0 10px hsl(24, 95%, 37%);
             font-size: 50px;
             margin-top:auto;
             text-align: center;
@@ -131,12 +129,12 @@ $user_data = check_login($con);
 <body>
     <!--This is the navbar which switches through the hyperlinks-->
     <header>
-        <a href="noLoginHome.html" class="logo">EZCalc</a>
+        <a href="home.php" class="logo">EZCalc</a>
         <nav>
-            <a href="noLoginHome.html" id="homeLink">Home</a>
-            <a href="noLoginCalculator.html" id="calculatorLink">Calculator</a>
-            <a href="noLoginFaq.html" class = "active" id="qaLink">FAQ</a>
-                <a href="login.php">Login or Signup</a>
+            <a href="home.php" id="homeLink">Home</a>
+            <a href="calculator.php" id="calculatorLink">Calculator</a>
+            <a href="faq.php" class = "active" id="qaLink">FAQ</a>
+                <a href="login.php">Logout</a>
         </nav>
     </header>
 
@@ -146,13 +144,16 @@ $user_data = check_login($con);
     </h1>
     <div class="faq-section">
       <div class="question"><font size="4">What is Lake Forest Academy?</font></div>
-      <div class="answer"><font size="4">Lake Forest Academy is a private high school located in Lake Forest, IL. It has day students and boarding students from all around the world.</font></div>
+      <div class="answer"><font size="4">Lake Forest Academy is a high school located in Lake Forest, IL. It has day students and boarding students from all around the world.</font></div>
+
+      <div class="question"><font size="4">What is the Lake Forest Academy GPA system?</font></div>
+      <div class="answer"><font size="4">LFA GPA system starts out at A+ with it equal to 4.33 and deducts 0.33 for each grade below so A would be 4. Honors and AP classes do not affect it.</font></div>
 
       <div class="question"><font size="4">How does the report work?</font></div>
       <div class="answer"><font size="4">It takes in all data entered by you and prints it out in a neat way with the GPA calculated at the end.</font></div>
 
       <div class="question"><font size="4">Can other schools use this?</font></div>
-      <div class="answer"><font size="4">Lake Forest Academy GPA system is specific to it and we would advise you to check you GPA system. The unweighted system can be used by all.</font></div>
+      <div class="answer"><font size="4">Lake Forest Academy GPA system is specific to it and we would advise you to check your GPA system. The unweighted system can be used by all.</font></div>
 
     </div>
     <!--This is the libraries for Jquery-->

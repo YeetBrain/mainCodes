@@ -57,21 +57,10 @@ function random_num($length) {
 }
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
     <title>Signup</title>
-    <script>
-        const signInBtnLink = document.querySelector('.signInBtn-link');
-        const signUpBtnLink = document.querySelector('.signUpBtn-link');
-        const wrapper = document.querySelector('.wrapper');
-        signUpBtnLink.addEventListener('click', () => {
-            wrapper.classList.toggle('active');
-        });
-        signInBtnLink.addEventListener('click', () => {
-            wrapper.classList.toggle('active');
-        });
-    </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
         * {
@@ -85,6 +74,8 @@ function random_num($length) {
             display: flex;
             align-items: center;
             justify-content: center;
+            height: 100vh;
+            margin: 0;
         }
         .error-message {
             color: red;
@@ -99,12 +90,15 @@ function random_num($length) {
         .wrapper {
             position: relative;
             width: 400px;
-            height:500px;
+            height: 500px;
             background: #000;
             box-shadow: 0 0 50px #FF6700;
-            border-radius:20px;
-            padding:40px;
+            border-radius: 20px;
+            padding: 40px;
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
         .wrapper:hover {
             animation: animate 1s linear infinite;
@@ -116,6 +110,7 @@ function random_num($length) {
             width: 100%;
             height: 100%;
             transition: 1s ease-in-out;
+            flex-direction: column;
         }
         .wrapper.active .form-wrapper.sign-in {
             transform: translateY(-450px);
@@ -130,7 +125,7 @@ function random_num($length) {
             border-bottom: 2px solid #fff;
             margin: 30px 0;
         }
-        .input-box i{
+        .input-box i {
             position: absolute;
             right: 20px;
             transform: translateY(-50%);
@@ -139,32 +134,31 @@ function random_num($length) {
         }
         .input-box label {
             position: absolute;
-            top:50%;
-            left:5px;
+            top: 50%;
+            left: 5px;
             transform: translateY(-50%);
-            font-size:16px;
+            font-size: 16px;
             color: #fff;
-            pointer-events:none;
+            pointer-events: none;
             transition: .5s;
         }
         .input-box input {
-            width:320px;
-            height:40px;
+            width: 320px;
+            height: 40px;
             font-size: 16px;
             color: #fff;
             padding: 0 5px;
-            background:transparent;
-            border:none;
-            outline:none;
+            background: transparent;
+            border: none;
+            outline: none;
         }
         .input-box input:focus~label,
         .input-box input:valid~label {
             top: -1px;
         }
-
         button {
-            position:relative;
-            width:100%;
+            position: relative;
+            width: 100%;
             height: 40px;
             background: #D2B48C;
             box-shadow: 0 0 10px #FF6700;
@@ -208,31 +202,27 @@ function random_num($length) {
     </style>
 </head>
 <body>
-    <div class = "wrapper">
-        <div class = "form-wrapper sign-in">
+    <div class="wrapper">
+        <div class="form-wrapper sign-in">
             <form method="post">
                 <h1>Sign Up</h1>
-                <div class = "input-box">
+                <div class="input-box">
                     <i class='bx bxs-user'></i>
-                <input type="text" required>
-                <label for="">Username</label>
+                    <input type="text" name="user_name" placeholder="Username" required>
                 </div> 
-
-                <div class = "input-box">
+                <div class="input-box">
                     <i class='bx bxs-lock'></i>
-                <input type="text" required>
-                <label for="">Password</label>
+                    <input type="password" name="password" placeholder="Password" required>
                 </div>
-
                 <?php if (!empty($error_message)): ?>
-                <div class="error-message"><?php echo htmlspecialchars($error_message); ?></div>
-            <?php endif; ?>
+                    <div class="error-message"><?php echo htmlspecialchars($error_message); ?></div>
+                <?php endif; ?>
                 <button type="submit">Sign Up</button>
                 <br>
                 <div class="signUp-link">
                     <p>Already have an account? <a href="login.php" class="signUpBtn-link">Login</a></p>
                 </div>
-                <div class = "guest-access">
+                <div class="guest-access">
                     <a href="noLoginHome.html">Guest Access</a>
                 </div>
             </form>
