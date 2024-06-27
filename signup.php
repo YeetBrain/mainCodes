@@ -214,6 +214,7 @@ function random_num($length) {
                 <?php if (!empty($error_message)): ?>
                 <div class="error-message"><?php echo htmlspecialchars($error_message); ?></div>
             <?php endif; ?>
+<<<<<<< HEAD
                 <button type="submit">Sign Up</button>
                 <br>
                 <div class="signUp-link">
@@ -221,6 +222,9 @@ function random_num($length) {
                 </div>
             </form>
         </div>
+            <a href="noLoginHome.html" style="font-size: 20px">Public Page</a>
+        </form>
+>>>>>>> 9585cbd8107008f1a39a44a5064c0e7764b1fc7b
     </div>
 </body>
 </html>
