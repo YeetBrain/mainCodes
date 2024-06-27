@@ -1,45 +1,50 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GPA Calculator</title>
     <style>
-        body {
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+        * {
             margin: 0;
-            font-family: Arial, Helvetica, sans-serif;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: 'Poppins', sans-serif;
         }
-
-        .topnav {
-            overflow: hidden;
-            background-color: #060c31;
-            text-align: center;
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 120px;
+            background: #11141a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
         }
-
-        .topnav a {
-            display: inline-block;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 20px;
+        
+        .logo {
+            font-size: 25px;
+            color: #fff;
             text-decoration: none;
-            font-size: 17px;
-            font-family: "Raleway", serif;
-            border-radius: 10px;
-            background-color: #024fd4;
-            margin: 0 5px;
-            transition: background-color 0.3s ease;
+            font-weight: 600;
         }
-
-        .topnav a:hover {
-            background-color: #ddd;
-            color: black;
+        nav a {
+            font-size: 18px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 35px;
+            transition: .3s;
         }
-
-        .topnav a.active {
-            background-color: #fff;
-            color: #060c31;
-        }
-
-        h1 {
-            font-family: "Raleway", serif;
+        nav a:hover,
+        nav a.active {
+            color: #FF6700;
         }
 
         body {
@@ -50,7 +55,27 @@
             background-repeat: no-repeat;
             background-size: cover;
         }
-
+        .title {
+            text-shadow:
+                0 0 10px #FF6700;
+            text-align: center;
+            font-size: 50px;
+            color: #f2f2f2;
+            margin-top: 100px;
+        }
+        .info-text {
+            background-color: #FFDBBB;
+            overflow: hidden;
+            padding: 20px 10px 20px 10px;
+            position: relative;
+            margin-left: 50px;
+            margin-right: 50px;
+            text-align: center;
+            font-size: 20px;
+            color: black;
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
         .gpa-calculator {
             flex: 0 0 calc(50% - 40px);
             background-color: rgba(255, 255, 255, 0.9);
@@ -103,9 +128,10 @@
             transform: translate(-50%, -50%);
         }
 
-        .button-container {
+        .button-container, .button-container a {
+            position: relative;
             display: flex;
-            justify-content: center;
+            align-items: center;
             gap: 10px;
             margin-bottom: 20px;
         }
@@ -113,25 +139,23 @@
         .button-container button, .button-container a {
             font-size: 20px;
             padding: 10px 20px;
-            border: 2px solid #024fd4;
             border-radius: 5px;
-            background-color: #060c31;
+            background-color: black;
             color: white;
             text-decoration: none;
             text-align: center;
         }
 
         .button-container button:hover, .button-container a:hover {
-            background-color: #0056b3;
+            background-color: #FF6700;
         }
 
         .container {
             position: relative;
             padding-bottom: 50px;
-        }
+            width:auto;
+            /* overflow-y:scroll; */
 
-        .logoutstyle {
-            text-align: left;
         }
 
         /* Container styling */
@@ -184,7 +208,7 @@
 
         /* Button styling */
         button {
-            background-color: #007bff;
+            background-color: #FF6700;
             color: #fff;
             padding: 10px 20px;
             border: none;
@@ -221,30 +245,24 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
 </head>
 <body>
-    <div class="topnav">
-        <a href="noLoginHome.html" id="homeLink" class="active">Home</a>
-        <a href="noLoginCalculator.html" id="calculatorLink">Calculator</a>
-        <a href="noLoginFaq.html" id="qaLink">QA</a>
-        <div class="logoutstyle">
-            <a href="login.php">Login or Signup</a>
-        </div>
-    </div>
+    <header>
+        <a href="noLoginHome.html" class="logo">EZCalc</a>
+        <nav>
+            <a href="noLoginHome.html" id="homeLink">Home</a>
+            <a href="noLoginCalculator.html" class = "active" id="calculatorLink">Calculator</a>
+            <a href="noLoginFaq.html" id="qaLink">FAQ</a>
+                <a href="login.php">Login or Signup</a>
+        </nav>
+    </header>
 
-    <p2 style="font-family: Georgia">
-        <font size="7">LFA GPA Calculator</font>
-    </p2>
+    <h1 class = "title">
+        LFA GPA Calculator
+    </h1>
 
-    <p1 style="font-family: Georgia">
-        <font size="5">
-            On the calculator page, there are two calculators which use the LFA GPA system and the unweighted system respectively. It is cumulative and you can add semester and courses however you want. You can also remove courses and semesters. Just enter your letter grade for each course and its name along with credits. You can print a pdf report at the end.
-        </font>
-    </p1>
-
-    <div class="button-container">
-        <button onclick="generatePDF()" style="font-size: 20px; padding: 10px 20px; border: 2px solid #024fd4; border-radius: 5px; background-color: #060c31; color: white;">Generate PDF Report</button>
-        <a href="login.php" style="font-size: 20px; padding: 10px 20px; border: 2px solid #024fd4; border-radius: 5px; background-color: #060c31; color: white;">Login or Signup to Save Latest PDF Report</a>
-    </div>
-
+    <h2 class = "info-text">
+        There are two calculators which use the LFA GPA system and the unweighted system respectively. It is cumulative and you can add/remove semesters and courses however you want. You can print a pdf report at the end.
+    </h2>
+    <br>
     <div class="container">
         <div class="gpa-calculator" id="gpaCalculator">
             <h2>LFA GPA Calculator</h2>
@@ -289,6 +307,11 @@
             <p id="weightedGpaResult"></p>
             <p id="unweightedGpaResult"></p>
         </div>
+    </div>
+    <br>
+    <div class="button-container">
+        <button onclick="generatePDF()" >Generate PDF Report</button>
+        <a href="login.php">Login or Signup to Save Latest PDF Report</a>
     </div>
 
     <div id="feedback"></div>

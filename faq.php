@@ -20,63 +20,80 @@ $user_data = check_login($con);
 <html>
 
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GPA Calculator</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
 
-body{
-    background-image: url('https://gpacalclfa.s3.us-east-2.amazonaws.com/mainCodes/CalcImageNew.jpg'); 
-    height: 100%;
-
-/* Center and scale the image nicely */
-background-position: center;
-background-repeat: no-repeat;
-background-size: cover;
-}
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 120px;
+            background: #11141a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 25px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        nav a {
+            font-size: 18px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 35px;
+            transition: .3s;
+        }
+        nav a:hover,
+        nav a.active {
+            color: #FF6700;
+        }
 
         body{
-          margin: 0;
+            background-image: url('https://gpacalclfa.s3.us-east-2.amazonaws.com/mainCodes/CalcImageNew.jpg'); 
+            height: 100%;
+
+            /* Center and scale the image nicely */
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
         }
-        .topnav {
-            overflow: hidden;
-            background-color: #060c31;
+        .heading-text {
+            text-shadow:
+                0 0 10px #FF6700;
+            font-size: 50px;
+            margin-top:auto;
             text-align: center;
-            z-index: 1000; /* Ensure navbar stays on top */
-        }
-
-        .topnav a {
-            display: inline-block;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 20px; /* Adjust padding as needed */
-            text-decoration: none;
-            font-size: 17px;
-            font-family: "Raleway", serif;
-            border-radius: 10px; /* Adjust border radius as needed */
-            background-color: #024fd4;
-            margin: 0 5px;
-            transition: background-color 0.3s ease;
-        }
-
-        .topnav a:hover {
-            background-color: #ddd;
-            color: black;
-        }
-
-        .topnav a.active {
-            background-color: #fff;
-            color: #060c31;
+            padding-top: 100px;
+            color: white;
         }
 
         .question{
-          font-family: "Raleway", serif;
           
             color: white;
             padding: 20px;
             margin: 20px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            background-color: #1a6bc8eb;
+            background-color: gray;
         }
 
         .logoutstyle{
@@ -85,15 +102,13 @@ background-size: cover;
         }
 
         .answer {
-          color:white;
-          font-family: "Raleway", serif;
-          
+            color:white;
             display: none;
             padding: 20px;
             margin: 10px;
             border: 1px solid #ccc;
             border-radius: 5px;
-            background-color: #02255a;
+            background-color: black;
         }
         p{
     display: inline-block;
@@ -115,23 +130,20 @@ background-size: cover;
 
 <body>
     <!--This is the navbar which switches through the hyperlinks-->
-    <div class="topnav">
-        <a href="home.php" id="homeLink">Home</a>
-        <a href="calculator.php" id="calculatorLink">Calculator</a>
-        <a href="faq.php" id="faqLink" class="active">FAQ</a>
-        <div class="logoutstyle">
-            <a href="login.php"> Logout </a>
-
-        </div>
-    </div>
+    <header>
+        <a href="noLoginHome.html" class="logo">EZCalc</a>
+        <nav>
+            <a href="noLoginHome.html" id="homeLink">Home</a>
+            <a href="noLoginCalculator.html" id="calculatorLink">Calculator</a>
+            <a href="noLoginFaq.html" class = "active" id="qaLink">FAQ</a>
+                <a href="login.php">Login or Signup</a>
+        </nav>
+    </header>
 
     <!--Directions for use, Header-->
-    <p
-    style="font-family: Georgia">
-<font size="6">
-    Press on the questions for a pop-up answer. If you have any trouble using the calculator or want a new feature shoot a email to us at h.yarlagadda@students.lfanet.org or david.nguyen@students.lfanet.org.
-</font>
-    </p>
+    <h1 class = "heading-text">
+            Frequently Asked Questions (FAQ)
+    </h1>
     <div class="faq-section">
       <div class="question"><font size="4">What is Lake Forest Academy?</font></div>
       <div class="answer"><font size="4">Lake Forest Academy is a private high school located in Lake Forest, IL. It has day students and boarding students from all around the world.</font></div>

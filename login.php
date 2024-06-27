@@ -181,6 +181,19 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
         .signUp-link p a:hover {
             text-decoration: underline;
         }
+        .guest-access {
+            text-align: center;
+            color: #FF6700;
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .guest-access a:hover {
+            text-decoration: underline;
+        }
+        a:visited { 
+            text-decoration: none; 
+            color: #FF6700; 
+        }
     </style>
 </head>
 <body>
@@ -207,6 +220,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
                 <br>
                 <div class="signUp-link">
                     <p>Don't have an account? <a href="signup.php" class="signUpBtn-link">Sign Up</a></p>
+                </div>
+                <div class = "guest-access">
+                    <a href="noLoginHome.html">Guest Access</a>
                 </div>
             </form>
         </div>

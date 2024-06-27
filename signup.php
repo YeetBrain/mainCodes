@@ -192,6 +192,19 @@ function random_num($length) {
         .signUp-link p a:hover {
             text-decoration: underline;
         }
+        .guest-access {
+            text-align: center;
+            color: #FF6700;
+            font-weight: 500;
+            text-decoration: none;
+        }
+        .guest-access a:hover {
+            text-decoration: underline;
+        }
+        a:visited { 
+            text-decoration: none; 
+            color: #FF6700; 
+        }
     </style>
 </head>
 <body>
@@ -214,17 +227,16 @@ function random_num($length) {
                 <?php if (!empty($error_message)): ?>
                 <div class="error-message"><?php echo htmlspecialchars($error_message); ?></div>
             <?php endif; ?>
-<<<<<<< HEAD
                 <button type="submit">Sign Up</button>
                 <br>
                 <div class="signUp-link">
                     <p>Already have an account? <a href="login.php" class="signUpBtn-link">Login</a></p>
                 </div>
+                <div class = "guest-access">
+                    <a href="noLoginHome.html">Guest Access</a>
+                </div>
             </form>
         </div>
-            <a href="noLoginHome.html" style="font-size: 20px">Public Page</a>
-        </form>
->>>>>>> 9585cbd8107008f1a39a44a5064c0e7764b1fc7b
     </div>
 </body>
 </html>

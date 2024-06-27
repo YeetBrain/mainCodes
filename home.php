@@ -23,13 +23,52 @@ $user_data = check_login($con);
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>GPA Calculator</title>
   
-  <!-- CSS for styling the page hi double check-->
+  <!-- CSS for styling the page double check-->
   <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px 120px;
+            background: #11141a;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 100;
+        }
+        
+        .logo {
+            font-size: 25px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        nav a {
+            font-size: 18px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            margin-left: 35px;
+            transition: .3s;
+        }
+        nav a:hover,
+        nav a.active {
+            color: #FF6700;
+        }
     /* General styles for the body and html, setting font and background color */
     body, html {
       margin: 0;
       padding: 0;
-      font-family: Arial, sans-serif;
       background-image: url('https://gpacalclfa.s3.us-east-2.amazonaws.com/mainCodes/CalcImage.jpg'); 
       background-position: center;
       background-repeat: no-repeat;
@@ -52,38 +91,39 @@ $user_data = check_login($con);
       display: flex;
       align-items: center;
       justify-content: center;
-      color: #fff;
+      color: black;
       text-align: center;
       transition: height 0.5s ease;
     }
 
-    /* Background image for the image section */
-    .image-section {
-      
-    }
 
     /* Styling for button containers, including hover effects */
+    .button-switch {
+      color: #ff6700;
+      border: transparent;
+      background-color: transparent;
+    }
+    .button-switch:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
     .button-container {
+      color: white;
       background: rgba(0, 0, 0, 0.7);
       padding: 20px;
       cursor: pointer;
       transition: background-color 0.3s ease;
       border-radius: 25px;
-      border: 2px solid #000000;
     }
 
     /* Hover effect for button containers */
     .button-container:hover {
       background: rgba(0, 0, 0, 0.9);
     }
-    .logoutstyle{
-            text-align: left;
-
-        }
 
     /* Additional styling for calculator and about sections */
     .calculator-section, .about-section {
-      background-color: #30a1da;
+      background-color: lightblue;
       padding: 25px;
       text-align: center;
       display: none;
@@ -93,57 +133,19 @@ $user_data = check_login($con);
     .show {
       display: block !important;
     }
-
-    /* Navigation bar styling */
-    .topnav {
-      overflow: hidden;
-      background-color: #060c31;
-      text-align: center;
-    }
-
-    /* Link styling within the navigation bar */
-    .topnav a {
-      display: inline-block;
-      color: #f2f2f2;
-      text-align: center;
-      padding: 14px 20px;
-      text-decoration: none;
-      font-size: 17px;
-      font-family: "Raleway", serif;
-      border-radius: 10px;
-      background-color: #024fd4;
-      margin: 0 5px;
-      transition: background-color 0.3s ease;
-    }
-
-    /* Hover effects for navigation links */
-    .topnav a:hover {
-      background-color: #ddd;
-      color: black;
-    }
-
-    /* Style for active navigation link */
-    .topnav a.active {
-      background-color: #fff;
-      color: #060c31;
-    }
-
-    /* Styling for headers and paragraphs */
-    h1 { font-family: "Raleway", serif; }
-
-    p { font-family: Palatino, "Palatino Linotype"; }
   </style>
 </head>
 <body>
   <!--This is the navbar which switches through the hyperlinks-->
-  <div class="topnav">
-    <a href="home.php" id="homeLink" class="active">Home</a>
-    <a href="calculator.php" id="calculatorLink">Calculator</a>
-    <a href="faq.php" id="qaLink">QA</a>
-    <div class="logoutstyle">
-            <a href="login.php"> Logout </a>
-        </div>
-  </div>
+  <header>
+      <a href="noLoginHome.html" class="logo">EZCalc</a>
+      <nav>
+          <a href="noLoginHome.html" class = "active" id="homeLink">Home</a>
+          <a href="noLoginCalculator.html" id="calculatorLink">Calculator</a>
+          <a href="noLoginFaq.html" id="qaLink">FAQ</a>
+              <a href="login.php">Login or Signup</a>
+      </nav>
+  </header>
 
   <!-- Main container holding all sections -->
   <div class="container">
@@ -156,13 +158,16 @@ $user_data = check_login($con);
     <!-- Calculator information section -->
     <div class="calculator-section">
       <h2><font size="7">Information about the Calculator</font></h2>
-      <button style="height:30px;width:150px" onclick="slideToAbout()"><font size="4">About Section</font></button>
+      <br>
+      <p style = "font-size: 20px;"> Switch to the <button class = "button-switch" style="font-size: 20px;" onclick="slideToAbout()">About Section</button></p> <br>
       <p><font size="5">On the calculator page there are two calculators which calculate LFA weighted GPA and unweighted GPA. LFA GPA system start out at A+ with it equal to 4.33 and deducts 0.33 for each grade below so A would be 4. Honors and AP classes do not affect it.</font></p>
     </div>
+    <br>
     <!-- About section with details about creators -->
     <div class="about-section">
       <h2><font size="7">About Us</font></h2>
-      <button style="height:30px;width:180px" onclick="slideToCalculator()"><font size="4">Calculator Section</font></button>
+      <br>
+      <p style = "font-size: 20px;"> Switch to the <button class = "button-switch" style="font-size: 20px;" onclick="slideToCalculator()">Calculator Section</button></p> <br>
       <p><font size="5">This calculator was made by Haricharan Yarlagadda and David Nguyen for FBLA Intro to Programming 2024.</font></p>
     </div>
   </div>
