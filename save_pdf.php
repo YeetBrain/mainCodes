@@ -31,7 +31,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['pdf'])) {
         }
 
         if ($stmt->execute()) {
-            echo "PDF report saved successfully!";
+            
         } else {
             echo "Error saving PDF report: " . $stmt->error;
         }

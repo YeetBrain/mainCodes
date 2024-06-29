@@ -1,11 +1,9 @@
 <?php
-session_start();
-include("connection.php");
-include("functions.php");
-
-$user_data = check_login($con);
+    session_start();
+    include("connection.php");
+    include("functions.php");
+    $user_data = check_login($con);
 ?>
-
 <?php
     if (isset($user_data['user_name'])) {
         echo htmlspecialchars($user_data['user_name']);
@@ -13,9 +11,9 @@ $user_data = check_login($con);
         echo "User data not available.";
     }
 ?>
-
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -23,6 +21,7 @@ $user_data = check_login($con);
     <title>GPA Calculator</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+
         * {
             margin: 0;
             padding: 0;
@@ -30,7 +29,18 @@ $user_data = check_login($con);
             scroll-behavior: smooth;
             font-family: 'Poppins', sans-serif;
         }
-        
+
+        html, body {
+            height: 100%;
+        }
+
+        body {
+            background-image: url('blurImg.png');
+    min-height: 100vh;
+    background-position: center;
+    background-size: cover;
+        }
+
         header {
             position: fixed;
             top: 0;
@@ -43,13 +53,14 @@ $user_data = check_login($con);
             align-items: center;
             z-index: 100;
         }
-        
+
         .logo {
             font-size: 25px;
             color: #fff;
             text-decoration: none;
             font-weight: 600;
         }
+
         nav a {
             font-size: 18px;
             color: #fff;
@@ -58,31 +69,24 @@ $user_data = check_login($con);
             margin-left: 35px;
             transition: .3s;
         }
+
         nav a:hover,
         nav a.active {
             color: #FF6700;
         }
 
-        body {
-            background-color: #30a1da;
-            background-image: url('https://gpacalclfa.s3.us-east-2.amazonaws.com/mainCodes/CalcImageNew.jpg');
-            height: 100%;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-size: cover;
-        }
         .title {
-            text-shadow:
-                0 0 10px #FF6700;
+            text-shadow: 0 0 10px #FF6700;
             text-align: center;
             font-size: 50px;
             color: #f2f2f2;
             margin-top: 100px;
         }
+
         .info-text {
             background-color: #FFDBBB;
             overflow: hidden;
-            padding: 20px 10px 20px 10px;
+            padding: 20px 10px;
             position: relative;
             margin-left: 50px;
             margin-right: 50px;
@@ -91,12 +95,20 @@ $user_data = check_login($con);
             color: black;
             margin-top: 20px;
             margin-bottom: 20px;
+            border-radius: 15px;
         }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-bottom: 50px;
+        }
+
         .gpa-calculator {
-            flex: 0 0 calc(50% - 40px);
             background-color: rgba(255, 255, 255, 0.9);
             padding: 20px;
-            margin: 20px auto;
+            margin: 20px;
             border-radius: 25px;
             border: 2px solid #000000;
             box-sizing: border-box;
@@ -104,55 +116,15 @@ $user_data = check_login($con);
             max-width: 600px;
         }
 
-        .identifier {
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 20px;
-            text-decoration: none;
-            border-radius: 10px;
-            border: 2px black;
-            margin: 20px;
-        }
-
-        p1 {
-            display: inline-block;
-            color: #f2f2f2;
-            text-align: center;
-            padding: 14px 20px;
-            text-decoration: none;
-            font-size: 17px;
-            font-family: "Raleway", serif;
-            border-radius: 10px;
-            margin: 40px;
-            margin-top: 180px;
-            background-color: #060c31;
-        }
-
-        p2 {
-            background-color: rgba(24, 168, 190, 0.8);
-            display: inline-block;
-            color: #f2f2f2;
-            text-decoration: none;
-            text-align: center;
-            font-size: 17px;
-            font-family: "Raleway", serif;
-            border-radius: 10px;
-            margin: 0;
-            position: absolute;
-            top: 15%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-        }
-
-        .button-container, .button-container a {
-            position: relative;
+        .button-container {
             display: flex;
-            align-items: center;
+            justify-content: center;
             gap: 10px;
-            margin-bottom: 20px;
+            margin-top: 20px;
         }
 
-        .button-container button, .button-container a {
+        .button-container button,
+        .button-container a {
             font-size: 20px;
             padding: 10px 20px;
             border-radius: 5px;
@@ -160,46 +132,21 @@ $user_data = check_login($con);
             color: white;
             text-decoration: none;
             text-align: center;
+            flex: 1;
+            display: inline-block;
         }
 
-        .button-container button:hover, .button-container a:hover {
+        .button-container button:hover,
+        .button-container a:hover {
             background-color: #FF6700;
         }
 
-        .container {
-            position: relative;
-            padding-bottom: 50px;
-            width:auto;
-            /* overflow-y:scroll; */
-
-        }
-
-        /* Container styling */
-        .container {
+        .button-container a {
             display: flex;
-            justify-content: center;
             align-items: center;
-            height: 45vh;
-            font-family: Arial, sans-serif;
+            justify-content: center;
         }
 
-        /* GPA calculator styling */
-        .gpa-calculator {
-            background: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            max-width: 600px;
-            width: 100%;
-        }
-
-        /* Header styling */
-        .gpa-calculator h2, .gpa-calculator h3 {
-            text-align: center;
-            color: #333;
-        }
-
-        /* Table styling */
         table {
             width: 100%;
             border-collapse: collapse;
@@ -222,7 +169,6 @@ $user_data = check_login($con);
             box-sizing: border-box;
         }
 
-        /* Button styling */
         button {
             background-color: #FF6700;
             color: #fff;
@@ -238,15 +184,13 @@ $user_data = check_login($con);
         }
 
         button:hover {
-            background-color: #0056b3;
+            background-color: #000000;
         }
 
         button:active {
-            background-color: #004080;
+            background-color: #000000;
         }
 
-
-        /* Result styling */
         #gpaCalculator p {
             font-size: 18px;
             font-weight: bold;
@@ -257,28 +201,59 @@ $user_data = check_login($con);
         #gpaCalculator p:not(:empty) {
             margin-top: 20px;
         }
+        .button-container button,
+.button-container a {
+    font-size: 20px;
+    padding: 10px 20px;
+    border-radius: 5px;
+    background-color: black;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box; /* Ensure box-sizing is applied */
+    margin-bottom: 50px;
+}
+
+.button-container button:hover,
+.button-container a:hover {
+    background-color: #FF6700;
+}
+
+.button-container button {
+    margin: 0; /* Remove any extra margins that might affect size */
+}
+
+.button-container a {
+    margin: 0; /* Remove any extra margins that might affect size */
+}
+
     </style>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
 </head>
+
 <body>
     <header>
-        <a href="noLoginHome.html" class="logo">EZCalc</a>
+        <a href="home.php" class="logo">EZCalc</a>
         <nav>
-            <a href="noLoginHome.html" id="homeLink">Home</a>
-            <a href="noLoginCalculator.html" class = "active" id="calculatorLink">Calculator</a>
-            <a href="noLoginFaq.html" id="qaLink">FAQ</a>
-                <a href="login.php">Login or Signup</a>
+            <a href="home.php" id="homeLink">Home</a>
+            <a href="calculator.php" class="active" id="calculatorLink">Calculator</a>
+            <a href="faq.php" id="qaLink">FAQ</a>
+            <a href="login.php">Logout</a>
         </nav>
     </header>
 
-    <h1 class = "title">
+    <h1 class="title">
         LFA GPA Calculator
     </h1>
 
-    <h2 class = "info-text">
-        There are two calculators which use the LFA GPA system and the unweighted system respectively. It is cumulative and you can add/remove semesters and courses however you want. You can print a pdf report at the end.
+    <h2 class="info-text">
+    There is one calculator which allows for user to calculate weighted and unweighted GPA. You can add and remove semesters and courses to your liking. Add the grade, course name, and number of credits for the semester to each class. Once you calculate your gpa, you can generate a pdf and save it into the database. This can be accessed for future use and reference.
     </h2>
-    <br>
+
     <div class="container">
         <div class="gpa-calculator" id="gpaCalculator">
             <h2>LFA GPA Calculator</h2>
@@ -324,10 +299,11 @@ $user_data = check_login($con);
             <p id="unweightedGpaResult"></p>
         </div>
     </div>
-    <br>
+
     <div class="button-container">
-        <button onclick="generatePDF()" >Generate PDF Report</button>
-        <a href="login.php">Login or Signup to Save Latest PDF Report</a>
+    <button type = "button" onclick="generatePDF()" >Generate PDF Report</button>
+        <button type = "button" onclick="savePDF()" >Save Latest PDF Report</button>
+        <button  type = "button" onclick="accessPDF()" >Access Old PDF Report</button>
     </div>
 
     <div id="feedback"></div>
@@ -480,7 +456,33 @@ $user_data = check_login($con);
             latestPdfBlob = doc.output('blob');
 
             // Provide feedback that the PDF has been generated
-            document.getElementById('feedback').textContent = "PDF has been generated successfully.";
+           
+        }
+
+        function savePDF() {
+            if (latestPdfBlob) {
+                const formData = new FormData();
+                formData.append('pdf', latestPdfBlob, 'GPA_Calculator_Report.pdf');
+                fetch('save_pdf.php', {
+                    method: 'POST',
+                    body: formData
+                })
+                .then(response => response.text())
+                .then(result => {
+                    document.getElementById('feedback').textContent = result;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                });
+                alert("PDF generated sucessfully!");
+            } else {
+                alert("Please generate a PDF first.");
+            }
+
+            
+        }
+        function accessPDF() {
+            window.location.href = 'access_pdf.php';
         }
 
         document.addEventListener("DOMContentLoaded", function () {
