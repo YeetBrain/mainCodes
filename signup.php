@@ -105,6 +105,8 @@ function random_num($length) {
             border-radius:20px;
             padding:40px;
             overflow: hidden;
+            transform: translateY(30%);
+            
         }
         .wrapper:hover {
             animation: animate 1s linear infinite;
