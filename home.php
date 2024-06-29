@@ -102,6 +102,7 @@ $user_data = check_login($con);
       color: #ff6700;
       border: transparent;
       background-color: transparent;
+      font-weight: bolder;
     }
     .button-switch:hover {
             text-decoration: underline;
