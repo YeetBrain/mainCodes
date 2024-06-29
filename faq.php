@@ -129,7 +129,7 @@ $user_data = check_login($con);
 <body>
     <!--This is the navbar which switches through the hyperlinks-->
     <header>
-        <a href="home.php" class="logo">EZCalc</a>
+        <a href="home.php" class="logo">LFACalc</a>
         <nav>
             <a href="home.php" id="homeLink">Home</a>
             <a href="calculator.php" id="calculatorLink">Calculator</a>

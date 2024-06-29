@@ -237,7 +237,7 @@
 
 <body>
     <header>
-        <a href="home.php" class="logo">EZCalc</a>
+        <a href="home.php" class="logo">LFACalc</a>
         <nav>
             <a href="home.php" id="homeLink">Home</a>
             <a href="calculator.php" class="active" id="calculatorLink">Calculator</a>
