@@ -1,10 +1,12 @@
 <?php
+    //kick out if not logged in
     session_start();
     include("connection.php");
     include("functions.php");
     $user_data = check_login($con);
 ?>
-<?php
+<?PHP
+    //keep user logged in
     if (isset($user_data['user_name'])) {
         echo htmlspecialchars($user_data['user_name']);
     } else {
@@ -232,11 +234,16 @@
 }
 
     </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js">
+//library for creating pdfs; JSPDF
+        
+        </script>
 </head>
 
 <body>
     <header>
+        <!--Hyperlinks to take user to different pages within program-->
         <a href="home.php" class="logo">LFACalc</a>
         <nav>
             <a href="home.php" id="homeLink">Home</a>
@@ -245,7 +252,7 @@
             <a href="login.php">Logout</a>
         </nav>
     </header>
-
+    
     <h1 class="title">
         LFA GPA Calculator
     </h1>
@@ -253,7 +260,7 @@
     <h2 class="info-text">
     There is one calculator which allows for user to calculate weighted and unweighted GPA. You can add and remove semesters and courses to your liking. Add the grade, course name, and number of credits for the semester to each class. Once you calculate your gpa, you can generate a pdf and save it into the database. This can be accessed for future use and reference.
     </h2>
-
+    <!--code for setting up the calculator-->
     <div class="container">
         <div class="gpa-calculator" id="gpaCalculator">
             <h2>LFA GPA Calculator</h2>
@@ -269,6 +276,7 @@
                         </tr>
                         <tr>
                             <td>
+                                <!-- dropdown for grades -->
                                 <select class="grade" required>
                                     <option value="4.33,4.0,A+">A+</option>
                                     <option value="4.0,4.0,A">A</option>
@@ -286,6 +294,7 @@
                                 </select>
                             </td>
                             <td><input type="text" class="courseName" required></td>
+                                <!-- credits -->
                             <td><input type="number" min="0" max="4" step="0.5" class="credit" required /></td>
                             <td><button type="button" onclick="addCourse('semester1')">Add Course</button></td>
                         </tr>
@@ -301,6 +310,7 @@
     </div>
 
     <div class="button-container">
+        <!-- buttons for js functons to create pdfs -->
     <button type = "button" onclick="generatePDF()" >Generate PDF Report</button>
         <button type = "button" onclick="savePDF()" >Save Latest PDF Report</button>
         <button  type = "button" onclick="accessPDF()" >Access Old PDF Report</button>
@@ -310,7 +320,7 @@
 
     <script>
         let latestPdfBlob = null;
-
+        //adding course by creating tables in the html
         function addCourse(semesterId) {
             const semesterTable = document.getElementById(semesterId + "Table");
             const row = semesterTable.insertRow(-1);
@@ -337,7 +347,7 @@
                 <td><button type="button" onclick="removeRow(this)">Remove</button></td>
             `;
         }
-
+        //addign semesters in the table
         function addSemester() {
             const semesterContainer = document.getElementById("semestersContainer");
             const semesterCount = semesterContainer.querySelectorAll('.semester').length + 1;
@@ -379,12 +389,12 @@
             `;
             semesterContainer.appendChild(newSemester);
         }
-
+        //removing rows from the table
         function removeRow(button) {
             const row = button.parentNode.parentNode;
             row.parentNode.removeChild(row);
         }
-
+        //removing semesters as a whole from the table
         function removeSemester() {
             const semesterContainer = document.getElementById("semestersContainer");
             const semesters = semesterContainer.querySelectorAll('.semester');
@@ -394,7 +404,7 @@
                 alert("No semester to remove!");
             }
         }
-
+        //calculating the GPA by pooling all the data collected from the tables and using the credits to multiply the grade given to create a accurate representation of the GPA
         function calculateGPA() {
             const semestersContainer = document.getElementById("semestersContainer");
             const semesters = semestersContainer.querySelectorAll('.semester');
@@ -422,6 +432,7 @@
             document.getElementById('unweightedGpaResult').textContent = "Your Unweighted GPA is: " + unweightedGPA.toFixed(2);
         }
 
+        //creating a doc in jsPDF so that the report can be made
         function generatePDF() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF();
@@ -459,6 +470,8 @@
            
         }
 
+        //function to check if the PDF has been generated and saves it to the database right after.
+
         function savePDF() {
             if (latestPdfBlob) {
                 const formData = new FormData();
@@ -481,10 +494,13 @@
 
             
         }
+
+        //just accesses the PDF 
         function accessPDF() {
             window.location.href = 'access_pdf.php';
         }
 
+        //DOMCONTENTLoaded to load the page before showing it for a smoother user experience
         document.addEventListener("DOMContentLoaded", function () {
             const homeLink = document.getElementById('homeLink');
             const calculatorLink = document.getElementById('calculatorLink');
